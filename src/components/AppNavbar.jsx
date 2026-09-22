@@ -4,6 +4,11 @@ import { Link, Button } from "@heroui/react";
 
 export function AppNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuItem=[
+    {name: "All Products", path: "/products"},
+    {name: "Add Products", path: "/products/add"},
+    {name: "About", path: "/about"}
+  ]
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
@@ -38,30 +43,20 @@ export function AppNavbar() {
               )}
             </svg>
           </button>
-          <div>Logo</div>
+          <div><Link href="/">Digital Product</Link></div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">
-          <li>
-            <Link href="#">Features</Link>
-          </li>
-          <li>
-            <Link href="#">Pricing</Link>
-          </li>
+         {
+          menuItem.map((item)=> <li key={item.name}><Link href={item.path}>{item.name}</Link></li>)
+         }
         </ul>
       </header>
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
           <ul className="flex flex-col gap-2 p-4">
-            <li>
-              <Link href="#" className="block py-2">
-                Features
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="block py-2">
-                Pricing
-              </Link>
-            </li>
+            {
+          menuItem.map((item)=> <li key={item.name}><Link href={item.path}>{item.name}</Link></li>)
+         }
           </ul>
         </div>
       )}
