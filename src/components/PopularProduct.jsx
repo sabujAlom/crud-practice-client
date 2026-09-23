@@ -1,4 +1,5 @@
 import { getAllProducts } from "@/lib/product/data";
+import { ProductCard } from "./ProductCard";
 
 
 const PopularProduct = async() => {
@@ -7,7 +8,7 @@ const PopularProduct = async() => {
     return (
         <div>
             {
-                productData.map((product)=><div key={product._id}>{product.title}</div>)
+                productData.map((product)=><ProductCard key={product._id}/>)
             }
         </div>
     );
